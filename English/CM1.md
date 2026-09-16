@@ -7,3 +7,24 @@
 	- wordly.org
 	- wordreference.com
 
+# Vocabulary
+full of = replete
+be curious to know = wonder
+
+be opposed to = 
+deteriorate = 
+
+satisfying = 
+increase = 
+make stronger =
+
+exercise = 
+accustom to=
+
+prepare = 
+resolve = 
+
+invent = 
+continue = 
+
+imminent =
