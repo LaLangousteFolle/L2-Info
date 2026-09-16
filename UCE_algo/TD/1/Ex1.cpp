@@ -2,17 +2,6 @@
 #include <termios.h>
 #include <unistd.h>
 
-#define Ex1
-#define Ex2
-#define Ex3
-#define Ex4
-#define Ex5
-#define Ex6
-#define Ex7
-#define Ex8
-#define Ex9
-#define Ex10
-
 struct termios oldt, newt;
 
 void no_buffer()
@@ -35,7 +24,7 @@ void restaure()
 void  ex1(void)
 {
   int nbL = 0;
-  char c = 0;
+  char c = getchar();
   while (c != '.')
   { 
     while (c != ' ' && c != '.')
@@ -44,6 +33,7 @@ void  ex1(void)
         nbL++;
       c = getchar();
     }
+    c = getchar();
   }
   printf("%i",nbL);
 }
@@ -215,30 +205,38 @@ void ex9(void)
   int state = 1;
   while (c != '.')
   {
-    while(c != ' ' && c != '.')
+    while(state != 4)
     {
       switch (state){
         case 1:
-          if (c == 'L') state = 2;
-          if (c == '.') state = 4;
+          switch (c)
+          {
+            case 'L': state = 2;
+            case '.': state = 4;
+            default: state = 1;
+            break;
+          }
           break;
         case 2:
-          if (c =='E') state = 3;
-          if (c == '.') state = 4;
-          else state = 1;
+          switch (c)
+          {
+            case 'E': state = 3;
+            case '.': state = 4;
+            default: state = 1;
+            break;
+          }
           break;
         case 3:
-          if (c =='.') state = 5;
-          else state = 1;
-          break;
+          switch(c)
+          {
+            case '.': nbM++;
+            default: state 1;
+          }
         case 4:
-          c = getchar();
-          break;
-        case 5:
-          nbM++;
-          state = 1;
-          break;
-      }
+          switch(c)
+          {
+            case 
+          }
     }
   }
   printf("%i", nbM);
@@ -272,5 +270,7 @@ void ex10(void)
 
 int main(void)
 {
+  no_buffer();
+  ex2();
   return(0);
 }
