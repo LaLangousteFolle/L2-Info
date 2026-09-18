@@ -1,0 +1,7 @@
+SELECT * FROM TechStor_Produits WHERE  stock = 0;
+SELECT * FROM TechStore_Clients WHERE date_inscription > 2025-12-31 ORDER BY date_inscription;
+SELECT * FROM TechStor_Commandes WERE montant_commande > 500 AND date_commande > '2026-04-01' AND date_commande '2026-04-01';
+SELECT* FROM TechStore_Clients NATURAL JOIN TechStor_Commandes;
+SELECT * FROM TechStor_Produits JOIN TechStor_LignesCommande USING(id_produit) JOIN TechStor_Commandes USING(id_commande) WHERE id_client = 501;
+SELECT DISTINCT ville FROM TechStore_Clients JOIN TechStor_Commandes USING(id_client) WHERE montant_total > 300;
+
