@@ -1,0 +1,5 @@
+SELECT techstor_produits.id_produit, nom, COUNT(id_retour) FROM techstor_produits LEFT JOIN techstor_sav ON techstor_sav.id_produit=techstor_produits.id_produit GROUP BY techstor_produits.id_produit,om;nom;
+SELECT id_produit, nom, id_fournisseur, pays FROM techstor_produits NATURAL JOIN techstor_fournisseurs GROUP BY id_produit, pays;
+SELECT techstor_clients.id_client, nom, prenom, ville FROM techstor_clients LEFT JOIN techstor_commandes ON techstor_clients.id_client=techstor_commandes ON techstor_clients.id_client=techstor_commandes.id_client WHERE date_commande IS NULL^J;
+SELECT nom, categorie, prix_achat FROM techstor_produits WHERE (SELECT AVG(prix_achat) FROM techstor_produits) < prix_achat GROUP BY nom, categorie, prix_achat
+SELECT DISTINCT techstor_clients.nom, prenom, ville FROM techstor_clients  JOIN techstor_commandes USING(id_client) JOIN techstor_lignescommande USING (id_commande) JOIN techstor_produits USING(id_produit) JOIN techstor_fournisseurs USING(id_fournisseur) WHERE techstor_fournisseurs.nom_fournisseur = 'TechImport Asia';
