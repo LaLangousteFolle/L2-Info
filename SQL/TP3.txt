@@ -1,0 +1,9 @@
+SELECT techstor_clients.nom, ville, techstor_commandes.date_commande, techstor_vendeur.nom, techstor_produits.nom, quantite FROM techstor_clients JOIN techstor_commandes USING(id_client) JOIN techstor_lignescommande USING(id_commande) JOIN techstor_produits USING (id_produit) JOIN techstor_vendeur USING(id_vendeur) WHERE techstor_clients.ville = 'Lyon' GROUP BY techstor_clients.nom, techstor_clients.ville, techstor_commandes.date_commande, techstor_produits.nom, techstor_vendeur.nom, quantite;
+
+SELECT techstor_lignescommande.prix_unitaire, (quantite * techstor_lignescommande.prix_unitaire), techstor_clients.nom, ville, techstor_commandes.date_commande, techstor_vendeur.nom, techstor_produits.nom, quantite FROM techstor_clients JOIN techstor_commandes USING(id_client) JOIN techstor_lignescommande USING(id_commande) JOIN techstor_produits USING (id_produit) JOIN techstor_vendeur USING(id_vendeur) WHERE techstor_clients.ville = 'Lyon' GROUP BY techstor_clients.nom, techstor_clients.ville, techstor_commandes.date_commande, techstor_produits.nom, techstor_vendeur.nom, quantite, techstor_lignescommande.prix_unitaire;
+
+SELECT id_commande FROM techstor_commandes AS Tc JJOIN techstor_vendeur USING (id_vendeur)^JJOIN techstor_clients USING (id_client) WHERE date_embauche<='2026-01-01' AND (ville = 'Lyon' OR ville = 'Paris' OR ville = 'Marseille');
+
+SELECT ville, categorie, SUM(quantite), SUM(Tl.prix_unitaire) FROM techstor_lignescommande as Tl JOIN techstor_commandes USING (id_commande) JOIN techstor_clients USING (id_client) JOIN techstor_produits USING (id_produit) GROUP BY ville, categorie;
+
+SELECT SUM(quantite), SUM(prix_unitaire), id_vendeur, techstor_vendeur.nom, EXTRACT(YEAR from date_commande) as year FROM techstor_lignescommande JOIN techstor_commandes USING (id_commande) JOIN techstor_vendeur USING(id_vendeur) GROUP BY id_vendeur, nom, year;
