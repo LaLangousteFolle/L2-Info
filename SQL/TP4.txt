@@ -1,0 +1,6 @@
+SELECT COUNT(AUT) FROM AUTEUR;
+SELECT COUNT(aut) FROM co_auteur WHERE numouv >=1;
+SELECT NUMSTA, FROM STATUE WHERE TYPSTA = 'Bas-relief' AND SCUSTA='';
+SELECT DESSTA, SCUSTA FROM statue JOIN musee ON statue.CODMUS=MUSEE.CODMUS AND statue.CODVIL_M=musee.codvil WHERE musee.nommus='Musée du Louvre';
+SELECT batiment.CODBAT, NUMSTA FROM batiment JOIN statue ON batiment.codvil=statue.codvil_S AND batiment.codsit = statue.codsit AND batiment.codbat = statue.codbat WHERE statue.datsta < batiment.datbat;
+SELECT NOMMUS FROM MUSEE^JJOIN statue ON musee.codmus = statue.codmus AND musee.codvil=statue.codvil_m WHERE (SELECT COUNT(numsta) FROM statue) = 0;
